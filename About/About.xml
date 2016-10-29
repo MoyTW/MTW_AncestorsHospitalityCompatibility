@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ModMetaData>
+	<name>MTW_AncestorsHospitalityCompatibility</name>
+	<author>MoyTW</author>
+	<targetVersion>0.15.1284</targetVersion>
+	<description>Compatibility patch for Hospitality/AncestorSpirits. This should be loaded after both of the above mods.</description>
+</ModMetaData>
