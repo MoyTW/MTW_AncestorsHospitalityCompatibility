@@ -1,8 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 using Source = RimWorld.Pawn_NeedsTracker;
-using MTW_AncestorSpirits;
-using Hospitality;
+using AncestorUtils = MTW_AncestorSpirits.AncestorUtils;
 
 using System.Linq;
 using System.Reflection;
@@ -49,9 +48,12 @@ namespace MTW_AncestorsHospitalityCompatibility
             * Begin Hospitality Section *
             *****************************/
             // The isGuest method is internal, so here are some Shenanigans to subvert that.
-            var isGuestMethod = pawn.GetType().GetMethod("IsGuest", BindingFlags.NonPublic | BindingFlags.Instance);
-            bool isGuest = (bool)isGuestMethod.Invoke(pawn, new object[0]);
-            if ((nd == NeedDefOf.Joy || nd == defComfort || nd == defBeauty || nd == defSpace) && isGuest); // ADDED
+            var isGuestMethod = typeof(Hospitality.Building_GuestBed).Assembly
+                .GetType("Hospitality.GuestUtility")
+                .GetMethod("IsGuest", BindingFlags.Public | BindingFlags.Static);
+            bool isGuest = (bool)isGuestMethod.Invoke(null, new object[] { pawn });
+
+            if ((nd == NeedDefOf.Joy || nd == defComfort || nd == defBeauty || nd == defSpace) && isGuest) // ADDED
             {
                 return true;
             }
