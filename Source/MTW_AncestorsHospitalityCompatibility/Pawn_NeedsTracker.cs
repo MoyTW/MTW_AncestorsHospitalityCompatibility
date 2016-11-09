@@ -36,7 +36,7 @@ namespace MTW_AncestorsHospitalityCompatibility
             {
                 return false;
             }
-            if ((nd == NeedDefOf.Joy || nd == defComfort || nd == defBeauty || nd == defSpace) && AncestorUtils.IsAncestor(pawn))
+            if ((nd == NeedDefOf.Joy || nd == defBeauty || nd == defSpace) && AncestorUtils.IsAncestor(pawn))
             {
                 return true;
             }
